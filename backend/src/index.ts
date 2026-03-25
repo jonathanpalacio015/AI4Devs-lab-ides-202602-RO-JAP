@@ -1,26 +1,26 @@
-import { Request, Response, NextFunction } from 'express';
-import express from 'express';
-import { PrismaClient } from '@prisma/client';
-import dotenv from 'dotenv';
-
-dotenv.config();
-const prisma = new PrismaClient();
+import express from "express";
+import cors from "cors";
+import path from "path";
+import candidatesRoutes from "./routes/candidates";
+import { errorHandler } from "./middleware/errorHandler";
 
 export const app = express();
-export default prisma;
 
-const port = 3010;
+app.use(cors());
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hola LTI!');
+// Servir archivos estáticos de uploads
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+
+// Rutas
+app.use("/api/candidates", candidatesRoutes);
+
+// Health check
+app.get("/", (req, res) => {
+  res.json({ message: "Servidor está funcionando correctamente" });
 });
 
-app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-  console.error(err.stack);
-  res.type('text/plain'); 
-  res.status(500).send('Something broke!');
-});
+// Middleware de error (debe ser el último)
+app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
+export default app;

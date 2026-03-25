@@ -134,8 +134,9 @@ Para comenzar con este proyecto, sigue estos pasos:
 1. Clona el repositorio.
 2. Instala las dependencias para el frontend y el backend:
 ```sh
-cd frontend
-npm install
+
+
+
 
 cd ../backend
 npm install
@@ -149,6 +150,7 @@ npm run build
 ```
 cd backend
 npm run dev 
+
 ```
 
 5. En una nueva ventana de terminal, construye el servidor frontend:
@@ -188,4 +190,5 @@ Por favor, reemplaza User, Password y Database con el usuario, la contraseña y 
 Para detener el contenedor Docker, ejecuta el siguiente comando:
 ```
 docker-compose down
+
 ```

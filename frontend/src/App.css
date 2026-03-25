@@ -1,38 +1,602 @@
-.App {
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+/* =================== NAVBAR =================== */
+.navbar {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Contenedor de links */
+.nav-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Botón toggle */
+.toggle-btn, button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+}
+
+.toggle-btn:active {
+  transform: translateY(0);
+}
+
+/* =================== FORMULARIO =================== */
+form {
+  max-width: 700px;
+  margin: 24px auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+form h2 {
+  margin: 0 0 24px 0;
+  text-align: center;
+  color: #1a1a1a;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+form h3 {
+  color: #333;
+  font-size: 16px;
+  margin: 20px 0 12px 0;
+  font-weight: 600;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 8px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="date"],
+form input[type="file"],
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Contenedor de campos educación y experiencia */
+.edu-block,
+.exp-block {
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.edu-block:hover,
+.exp-block:hover {
+  background: #f5f5f5;
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+.edu-block input,
+.exp-block input,
+.edu-block textarea,
+.exp-block textarea {
+  margin-bottom: 10px;
+}
+
+.edu-block input:last-child,
+.exp-block input:last-child,
+.edu-block textarea:last-child,
+.exp-block textarea:last-child {
+  margin-bottom: 0;
+}
+
+/* Botones de acción dentro de bloques */
+.edu-block button,
+.exp-block button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.edu-block button:hover,
+.exp-block button:hover {
+  background-color: #c82333;
+}
+
+/* Botones de agregar */
+form button[type="button"] {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+form button[type="button"]:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(33, 136, 56, 0.3);
+}
+
+/* Botón GUARDAR - VERDE */
+form button[type="submit"] {
+  background-color: #28a745 !important;
+  width: 100%;
+  padding: 14px !important;
+  font-size: 16px !important;
+  font-weight: 600;
+  margin-top: 16px;
+}
+
+form button[type="submit"]:hover {
+  background-color: #218838 !important;
+}
+
+/* Label */
+form label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Mensaje de éxito/error */
+form p {
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* =================== LISTA DE CANDIDATOS =================== */
+#list {
+  max-width: 1400px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+#list h2 {
+  font-size: 24px;
+  margin: 0 0 24px 0;
+  color: #1a1a1a;
+  text-align: center;
+  font-weight: 600;
+}
+
+.candidates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.candidate-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e0e0e0;
+}
+
+.candidate-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  border-color: #007bff;
+}
+
+.candidate-card h3 {
+  margin: 0 0 12px 0;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.candidate-card p {
+  margin: 8px 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.candidate-card strong {
+  color: #333;
+}
+
+/* Links en tarjetas */
+.candidate-card a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  word-break: break-all;
+}
+
+.candidate-card a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Secciones en tarjetas */
+.candidate-card h4 {
+  margin: 16px 0 8px 0;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 12px;
+}
+
+.candidate-card ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.candidate-card li {
+  margin: 6px 0;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .navbar h1 {
+    font-size: 18px;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #1a1a1a;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .toggle-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Formulario */
+  form {
+    max-width: 100%;
+    margin: 16px 8px;
+    padding: 16px;
+  }
+
+  form h2 {
+    font-size: 20px;
+  }
+
+  form h3 {
+    font-size: 15px;
+  }
+
+  form input,
+  form textarea {
+    font-size: 16px; /* Previene zoom en iOS */
+    padding: 14px;
+  }
+
+  form button[type="submit"] {
+    padding: 12px !important;
+    font-size: 15px !important;
+  }
+
+  /* Grid responsivo */
+  .candidates-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 8px;
+  }
+
+  #list {
+    padding: 0 8px;
+  }
+
+  .candidate-card {
+    padding: 16px;
+  }
+
+  .candidate-card h3 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Navbar mobile pequeño */
+  .navbar {
+    padding: 10px 12px;
+  }
+
+  .navbar h1 {
+    font-size: 16px;
+  }
+
+  .hamburger {
+    font-size: 24px;
+  }
+
+  /* Formulario mobile */
+  form {
+    margin: 12px 4px;
+    padding: 12px;
+  }
+
+  form h2 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  form input,
+  form textarea,
+  form button {
+    font-size: 16px;
+  }
+
+  .edu-block,
+  .exp-block {
+    padding: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Candidatos mobile */
+  .candidates-grid {
+    gap: 12px;
+    padding: 0 4px;
+  }
+
+  #list {
+    padding: 0 4px;
+    margin: 16px auto;
+  }
+
+  #list h2 {
+    font-size: 20px;
+  }
+
+  .candidate-card {
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .candidate-card h3 {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .candidate-card p {
+    font-size: 13px;
+    margin: 6px 0;
+  }
+
+  .candidate-card h4 {
+    font-size: 13px;
+    margin: 12px 0 6px 0;
+  }
+
+  .candidate-card ul {
+    padding-left: 16px;
+  }
+
+  .candidate-card li {
+    font-size: 12px;
+  }
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Botón verde para guardar */
+button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Lista de candidatos */
+h2 {
+  margin-top: 24px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+thead {
+  background-color: #000;
+  color: #fff;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+/* Tarjetas de candidatos */
+.candidate-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .nav-links {
+    display: none; /* oculto por defecto en móvil */
+    flex-direction: column;
+    background-color: #000;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 200px;
+    padding: 12px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .nav-links.show {
+    display: flex; /* se muestra cuando se activa el menú hamburguesa */
+  }
+
+  .nav-links button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  form {
+    width: 95%;
+    padding: 12px;
+  }
+
+  table {
+    display: none; /* ocultamos tabla en móviles */
+  }
+
+  .candidate-card {
+    width: 100%;
   }
 }
